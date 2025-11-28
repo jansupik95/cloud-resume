@@ -1,0 +1,39 @@
+name: Deploy Azure Function (publish-profile)
+
+on:
+  push:
+    branches: [ main ]
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Use Node.js 18
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+
+    - name: Install dependencies (function folder)
+      working-directory: ./visitorCounter
+      run: |
+        npm ci --production
+
+    - name: Prepare package (zip)
+      run: |
+        rm -rf ./artifact || true
+        mkdir -p ./artifact
+        (cd visitorCounter && zip -r ../artifact/function.zip .)
+
+    - name: Deploy to Azure Function App (via publish profile)
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: jan-resume-func
+        publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
+        package: ./artifact/function.zip
