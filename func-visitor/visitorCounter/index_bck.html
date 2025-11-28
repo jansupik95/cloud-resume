@@ -1,0 +1,66 @@
+// index.js - Azure Function (HTTP trigger)
+// increments/reads a counter in Azure Table Storage using @azure/data-tables
+
+const { TableClient } = require("@azure/data-tables");
+
+module.exports = async function (context, req) {
+  try {
+    const connectionString = process.env.AzureWebJobsStorage;
+    if (!connectionString) {
+      context.log.error("AzureWebJobsStorage není nastavena.");
+      context.res = { status: 500, body: { error: "Storage not configured." } };
+      return;
+    }
+
+    const tableName = "VisitorCounter";
+    const client = TableClient.fromConnectionString(connectionString, tableName);
+
+    // zajistíme, že tabulka existuje (safe)
+    try {
+      await client.createTable(); // pokud už existuje, vyhodí se, ale lze ignorovat
+    } catch (e) {
+      // ignore if already exists
+    }
+
+    const partitionKey = "counter";
+    const rowKey = "visits";
+
+    if (req.method === "POST") {
+      // POST: inkrementuj counter
+      let entity;
+      try {
+        const res = await client.getEntity(partitionKey, rowKey);
+        entity = res;
+      } catch (err) {
+        // pokud neexistuje, vytvoříme (start od 0)
+        entity = { partitionKey, rowKey, count: 0 };
+        try { await client.createEntity(entity); } catch (e) {}
+      }
+
+      const newCount = (entity.count || 0) + 1;
+      // update entity
+      const updated = {
+        partitionKey,
+        rowKey,
+        count: newCount
+      };
+      await client.upsertEntity(updated, "Replace");
+      context.res = { status: 200, body: { count: newCount } };
+      return;
+    } else {
+      // GET: vrať současný counter (0 pokud neexistuje)
+      try {
+        const res = await client.getEntity(partitionKey, rowKey);
+        context.res = { status: 200, body: { count: res.count || 0 } };
+        return;
+      } catch (err) {
+        context.res = { status: 200, body: { count: 0 } };
+        return;
+      }
+    }
+
+  } catch (err) {
+    context.log.error("Function error:", err);
+    context.res = { status: 500, body: { error: err.message || err } };
+  }
+};

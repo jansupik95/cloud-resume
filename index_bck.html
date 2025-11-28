@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Jan Šupík — Cloud Resume</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@600;800&family=Chakra+Petch:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Floating Home button -->
+  <button id="homeBtn" class="home-btn" title="Back to intro">Home</button>
+
+  <!-- Nebula background -->
+  <div class="nebula" aria-hidden="true"></div>
+
+  <!-- Page wrapper -->
+  <div id="page" class="page">
+
+    <!-- HERO / HOME -->
+    <header class="section hero" id="hero" role="region" aria-label="Intro">
+      <div class="container hero-inner centered-grid">
+
+        <div class="hero-block avatar-and-title">
+          <img class="avatar-img" src="profile.jpg" alt="Jan Supik avatar">
+          <div class="title-block center-text">
+            <h1 class="name">Jan Šupík</h1>
+            <p class="subtitle">Infrastructure Engineer • Azure Foundations</p>
+            <div class="tagline">Virtualization • Storage • Backup • Migrations • Datacenter Operations</div>
+
+            <div class="cta-row wrap">
+              <a class="btn large" href="#contact">Contact</a>
+              <a class="btn large ghost" href="#experience">Experience</a>
+              <a class="btn large primary" href="cv_jan_supik.pdf" download>Download CV (PDF)</a>
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-summary summary-card center-text">
+          <p class="lead">
+            Infrastructure Engineer with 9+ years of hands-on experience in virtualization, storage infrastructure and
+            enterprise backup systems. I design resilient solutions, lead datacenter migrations and deliver operational
+            stability. Building cloud skills in Microsoft Azure and learning infrastructure automation (Terraform, Ansible).
+          </p>
+
+          <div class="top-nav center">
+            <a class="nav-link" href="#experience">Experience</a>
+            <a class="nav-link" href="#skills">Skills</a>
+            <a class="nav-link" href="#projects">Projects</a>
+            <a class="nav-link" href="#certifications">Certifications</a>
+            <a class="nav-link" href="#contact">Contact</a>
+          </div>
+
+          <div class="meta center">
+            <span class="meta-item"><strong>Certifications:</strong> AZ-900, VCAP (2023), VCP (2022), Hitachi SSA</span>
+            <span class="meta-item"><strong>Availability:</strong> Open for freelance & contract work</span>
+          </div>
+        </aside>
+
+      </div>
+    </header>
+
+    <!-- ABOUT -->
+    <section id="about" class="section card reveal" role="region" aria-label="About me">
+      <div class="container narrow">
+        <h2>About me</h2>
+        <p>
+          I build reliable, secure and maintainable infrastructure environments. My core expertise is VMware-based
+          virtualization, enterprise storage and backup solutions, datacenter migrations and ongoing operations.
+          I design solutions focused on performance, availability and compliance.
+        </p>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="section card reveal" role="region" aria-label="Experience">
+      <div class="container">
+        <h2>Experience</h2>
+
+        <div class="job">
+          <h3>Infrastructure Engineer — CGI Inc.</h3>
+          <p class="job-meta">2021 — Present</p>
+          <ul>
+            <li>Administered large-scale VMware environments including ESXi hosts and vCenter, ensuring high availability and stability.</li>
+            <li>Led lifecycle management: patching, upgrades, remediation and performance tuning across multiple clusters and sites.</li>
+            <li>Engineered and deployed new virtual clusters and enterprise storage arrays (Dell, HPE, Hitachi) tailored to customer workloads.</li>
+            <li>Designed and validated backup & recovery strategies; coordinated DR testing and recovery drills to meet RTO/RPO targets.</li>
+            <li>Managed capacity planning, monitoring and resource optimization to improve utilization and reduce costs.</li>
+            <li>Maintained operational compliance with hardening standards and benchmarks (CIS), and implemented security controls for infrastructure.</li>
+            <li>Contributed to automation efforts and runbooks — preparing environments for IaC adoption (Terraform) and scripting tasks.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <h3>Technical Specialist — TietoEvry Czech</h3>
+          <p class="job-meta">2018 — 2021</p>
+          <ul>
+            <li>Operated & supported virtualization platforms and performed platform upgrades and patch cycles.</li>
+            <li>Administered enterprise backup solutions and recovery procedures; collaborated on backup architecture and tuning.</li>
+            <li>Supported storage administration tasks and storage provisioning for production workloads.</li>
+            <li>Implemented operational processes, monitoring, and incident remediation to maintain SLAs.</li>
+          </ul>
+        </div>
+
+        <div class="job">
+          <h3>Junior Network Engineer — OKIN BPS</h3>
+          <p class="job-meta">2016 — 2018</p>
+          <ul>
+            <li>Provided network operations, on-site support and troubleshooting for regional WAN/LAN infrastructure.</li>
+            <li>Assisted in rollout and configuration of network equipment and supported operational handovers.</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section reveal" role="region" aria-label="Skills">
+      <div class="container narrow">
+        <h2>Skills</h2>
+        <ul class="skills-list">
+          <li>VMware virtualization</li>
+          <li>Enterprise storage & architecture</li>
+          <li>Enterprise backup & recovery</li>
+          <li>Datacenter migrations & consolidation</li>
+          <li>Infrastructure operations & monitoring</li>
+          <li>Microsoft Azure fundamentals</li>
+          <li>Learning automation tools (Terraform & Ansible)</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="section card reveal" role="region" aria-label="Projects">
+      <div class="container">
+        <h2>Selected projects</h2>
+        <ul>
+          <li>Large-scale datacenter migration and consolidation for multiple tenants — planned and executed with minimal downtime.</li>
+          <li>Design and rollout of enterprise storage systems with integrated backup and recovery processes.</li>
+          <li>Capacity planning and performance optimization projects for critical workloads.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CERTIFICATIONS -->
+    <section id="certifications" class="section card reveal" role="region" aria-label="Certifications">
+      <div class="container narrow">
+        <h2>Certifications</h2>
+        <ul class="cert-list">
+          <li>Microsoft AZ-900 (Azure Fundamentals)</li>
+          <li>VMware VCAP (2023)</li>
+          <li>VMware VCP (2022)</li>
+          <li>Hitachi Storage Systems Architecture</li>
+          <li>AZ-104 (in progress)</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section card reveal" role="region" aria-label="Contact">
+      <div class="container narrow">
+        <h2>Contact</h2>
+
+        <div class="contact-grid-modern">
+          <div class="contact-modern-card">
+            <div class="icon-wrap">
+              <svg viewBox="0 0 24 24" width="34" height="34" aria-hidden="true" focusable="false">
+                <path fill="currentColor" d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1 .9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5L4 8V6l8 5 8-5v2z"/>
+              </svg>
+            </div>
+            <div class="contact-body">
+              <h3>Email</h3>
+              <p><a href="mailto:supik.jan00@gmail.com">supik.jan00@gmail.com</a></p>
+            </div>
+          </div>
+
+          <div class="contact-modern-card">
+            <div class="icon-wrap">
+              <svg viewBox="0 0 24 24" width="34" height="34" aria-hidden="true" focusable="false">
+                <path fill="currentColor" d="M6.62 10.79a15.05 15.05 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1v3.5a1 1 0 01-1 1C10.07 22 2 13.93 2 3.5A1 1 0 013 2.5H6.5a1 1 0 011 1c0 1.24.2 2.45.57 3.57a1 1 0 01-.24 1.01l-2.2 2.21z"/>
+              </svg>
+            </div>
+            <div class="contact-body">
+              <h3>Phone</h3>
+              <p><a href="tel:+420721006468">+420 721 006 468</a></p>
+            </div>
+          </div>
+
+          <div class="contact-modern-card">
+            <div class="icon-wrap">
+              <svg viewBox="0 0 24 24" width="34" height="34" aria-hidden="true" focusable="false">
+                <path fill="currentColor" d="M12 3L12 15M5 10l7 7 7-7M5 21h14a1 1 0 001-1V7a1 1 0 00-1-1h-4v2h3v12H6V8h3V6H5a1 1 0 00-1 1v12a1 1 0 001 1z"/>
+              </svg>
+            </div>
+            <div class="contact-body">
+              <h3>Download CV</h3>
+              <p><a class="download-link" href="cv_jan_supik.pdf" download>Download full CV (PDF)</a></p>
+            </div>
+          </div>
+        </div>
+
+        <p class="contact-note">Prefer email for first contact. Available for remote and on-site engagements.</p>
+      </div>
+    </section>
+
+    <!-- VISITOR COUNTER -->
+    <section id="counter-section" class="section counter-section card reveal" role="region" aria-label="Visitor counter">
+      <div class="container narrow">
+        <h2>Visitor counter</h2>
+        <p id="counter" class="counter">Loading...</p>
+        <p class="muted">Demo counter — persistent Azure-backed counter will be added later.</p>
+      </div>
+    </section>
+
+  </div><!-- /page -->
+
+  <footer class="footer">
+    <div class="container">
+      <p>© <span id="year"></span> Jan Šupík — Cloud Resume (2040)</p>
+    </div>
+  </footer>
+
+  <!-- Scripts (unchanged behavior) -->
+  <script>
+    function smoothTo(selector) {
+      const el = document.querySelector(selector);
+      if (!el) return;
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      el.setAttribute('tabindex', '-1');
+      el.focus({ preventScroll: true });
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', function(e) {
+        e.preventDefault();
+        smoothTo(this.getAttribute('href'));
+      });
+    });
+
+    document.querySelectorAll('.nav-link').forEach(a => {
+      a.addEventListener('click', function(e) {
+        e.preventDefault();
+        smoothTo(this.getAttribute('href'));
+      });
+    });
+
+    const homeBtn = document.getElementById('homeBtn');
+    homeBtn.addEventListener('click', () => smoothTo('#hero'));
+
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('inview');
+          obs.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(r => io.observe(r));
+
+    // Visitor counter (local demo)
+    const counterEl = document.getElementById('counter');
+    const key = 'cloudResumeVisits_v4';
+    let count = parseInt(localStorage.getItem(key) || '0', 10);
+    count += 1;
+    localStorage.setItem(key, count);
+    counterEl.textContent = count.toLocaleString('en-US');
+
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Wheel navigation (debounced)
+    const sectionEls = Array.from(document.querySelectorAll('.section'));
+    const total = sectionEls.length;
+    let activeIdx = 0;
+    function updateActiveIndex() {
+      const scrollPos = window.scrollY + window.innerHeight / 3;
+      for (let i = sectionEls.length - 1; i >= 0; i--) {
+        const rect = sectionEls[i].getBoundingClientRect();
+        const top = window.scrollY + rect.top;
+        if (scrollPos >= top) {
+          activeIdx = i;
+          break;
+        }
+      }
+    }
+    updateActiveIndex();
+    let wheelLock = false;
+    function gotoIndex(i) {
+      if (i < 0) i = 0;
+      if (i >= total) i = total - 1;
+      activeIdx = i;
+      sectionEls[activeIdx].scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+    window.addEventListener('wheel', (e) => {
+      if (wheelLock || e.ctrlKey) return;
+      const delta = e.deltaY;
+      if (Math.abs(delta) < 20) return;
+      wheelLock = true;
+      if (delta > 0) {
+        updateActiveIndex();
+        gotoIndex(Math.min(activeIdx + 1, total - 1));
+      } else {
+        updateActiveIndex();
+        gotoIndex(Math.max(activeIdx - 1, 0));
+      }
+      setTimeout(() => { wheelLock = false; }, 700);
+    }, { passive: true });
+
+    // Accessibility: focus outlines on keyboard nav
+    document.addEventListener('mousedown', () => document.body.classList.remove('show-focus'));
+    document.addEventListener('keydown', (e) => { if (e.key === 'Tab') document.body.classList.add('show-focus'); });
+
+  </script>
+</body>
+</html>

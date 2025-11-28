@@ -1,0 +1,12 @@
+{
+  "name": "visitor-counter-func",
+  "version": "1.0.0",
+  "description": "Visitor counter for Cloud Resume Challenge",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@azure/data-tables": "^12.6.0"
+  }
+}

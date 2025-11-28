@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Jan Šupík — Cloud Resume</title>
+
+  <!-- Minimal, self-contained styles — futuristic, centered, grid-based -->
+  <style>
+    :root{
+      --bg:#070712;
+      --card:#0f1220;
+      --accent:#6df0ff;
+      --accent-2:#8a6bff;
+      --muted:#9aa3b2;
+      --glass: rgba(255,255,255,0.03);
+      --soft: rgba(255,255,255,0.04);
+      --chip-bg: rgba(255,255,255,0.04);
+      --chip-text: #e6f3f6;
+      --skill-light: rgba(255,255,255,0.12);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    html,body{height:100%;background:
+      radial-gradient(1200px 600px at 10% 10%, rgba(106,106,255,0.06), transparent 6%),
+      radial-gradient(900px 450px at 90% 85%, rgba(109,240,255,0.03), transparent 6%),
+      var(--bg);
+      color:#e8eef6;margin:0;padding:0; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;}
+
+    /* page container */
+    .page {
+      min-height:100vh;
+      display:grid;
+      grid-template-rows:auto 1fr auto;
+      gap:32px;
+      align-items:start;
+      justify-items:center;
+      padding:40px 20px;
+    }
+
+    header{
+      width:100%;
+      max-width:1100px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .brand {
+      display:flex;
+      align-items:center;
+      gap:12px;
+      cursor:pointer;
+      text-decoration:none;
+      color:inherit;
+    }
+    .brand .logo {
+      width:46px;height:46px;border-radius:12px;
+      background:linear-gradient(135deg,var(--accent),var(--accent-2));
+      display:flex;align-items:center;justify-content:center;font-weight:700;color:#071021;
+      box-shadow:0 6px 18px rgba(106,110,255,0.18);
+      transform:translateZ(0);
+    }
+    .brand h1{font-size:16px;margin:0}
+    .brand p{margin:0;color:var(--muted);font-size:12px}
+
+    nav{display:flex;gap:12px;align-items:center;}
+    .nav-btn {
+      background:transparent;border:1px solid rgba(255,255,255,0.06);padding:8px 14px;border-radius:10px;
+      color:var(--muted);font-weight:600;font-size:13px;text-decoration:none;
+      transition:all .18s ease;
+    }
+    .nav-btn:hover{transform:translateY(-3px); color:var(--accent); border-color:rgba(109,240,255,0.12)}
+
+    main{
+      width:100%;
+      max-width:1100px;
+      display:grid;
+      grid-template-columns: 420px 1fr;
+      gap:32px;
+      align-items:start;
+    }
+
+    /* left card (hero) */
+    .hero {
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.015));
+      border-radius:16px;padding:28px;box-shadow:0 8px 40px rgba(2,6,23,0.6);backdrop-filter: blur(6px);
+      border:1px solid rgba(255,255,255,0.03);
+      display:flex;flex-direction:column;gap:18px;
+    }
+    .photo {
+      width:100%;display:flex;justify-content:center;
+    }
+    .photo img{width:160px;height:160px;border-radius:20px;object-fit:cover;border:2px solid rgba(255,255,255,0.04);box-shadow:0 12px 40px rgba(0,0,0,0.6)}
+    .name {font-size:20px;font-weight:700;letter-spacing:0.2px}
+    .title {color:var(--muted);font-size:13px;margin-top:4px}
+    .summary {color:var(--muted);font-size:14px;line-height:1.5}
+    .skills {display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+    .chip{background:var(--chip-bg);padding:7px 10px;border-radius:10px;font-weight:600;font-size:13px;color:var(--chip-text);box-shadow:inset 0 -1px 0 rgba(255,255,255,0.01)}
+    .chip.light{background:var(--skill-light);color:#fff;opacity:0.95}
+
+    .cta-row{display:flex;gap:12px;align-items:center;margin-top:8px}
+    .btn-primary{
+      background:linear-gradient(90deg,var(--accent),var(--accent-2));border:none;padding:12px 16px;border-radius:12px;font-weight:700;color:#071021;
+      cursor:pointer;box-shadow:0 10px 30px rgba(106,110,255,0.12);text-decoration:none;
+    }
+    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:10px 14px;border-radius:12px;color:var(--muted);text-decoration:none}
+
+    .counter {margin-top:12px;font-size:18px;font-weight:700;color:var(--accent);}
+    .label-small{font-size:12px;color:var(--muted)}
+
+    /* right content (grid sections) */
+    .content{
+      display:grid;
+      gap:20px;
+      align-content:start;
+    }
+
+    .card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.007));
+      border-radius:14px;padding:20px;border:1px solid rgba(255,255,255,0.03);
+      box-shadow:0 6px 30px rgba(0,0,0,0.6);
+    }
+
+    .grid {
+      display:grid;
+      grid-template-columns:repeat(2, 1fr);
+      gap:14px;
+    }
+
+    h2{margin:0;font-size:16px}
+    p.small{margin:8px 0;color:var(--muted);font-size:13px}
+
+    .experience-item{border-radius:10px;padding:10px;background:var(--glass);display:flex;gap:12px;align-items:flex-start}
+    .exp-left{width:52px;height:52px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));display:flex;align-items:center;justify-content:center;font-weight:700}
+    .exp-content h3{margin:0;font-size:14px}
+    .exp-content p{margin:2px 0;color:var(--muted);font-size:13px}
+
+    footer{text-align:center;color:var(--muted);font-size:13px;padding:28px 0 8px 0}
+
+    /* responsive */
+    @media (max-width:980px){
+      main{grid-template-columns:1fr; padding-top:20px}
+      .hero{order:2}
+    }
+
+    /* subtle animations */
+    .reveal{opacity:0; transform:translateY(12px); transition: all .6s cubic-bezier(.2,.9,.3,1);}
+    .reveal.visible{opacity:1; transform:none;}
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- header -->
+    <header>
+      <a class="brand" onclick="scrollToTop()" role="button">
+        <div class="logo">JS</div>
+        <div>
+          <h1>Jan Šupík</h1>
+          <p>Infrastructure Engineer — Cloud & Infrastructure</p>
+        </div>
+      </a>
+
+      <nav>
+        <a class="nav-btn" href="#experience">Experience</a>
+        <a class="nav-btn" href="#skills">Skills</a>
+        <a class="nav-btn" href="#contact">Contact</a>
+        <a class="nav-btn" href="#certs">Certifications</a>
+      </nav>
+    </header>
+
+    <!-- main -->
+    <main>
+
+      <!-- left hero card -->
+      <section class="hero reveal" id="home">
+        <div class="photo">
+          <!-- profile.jpg must be in same $web folder -->
+          <img src="profile.jpg" alt="Jan Šupík — profile" />
+        </div>
+
+        <div style="text-align:center">
+          <div class="name">Jan Šupík</div>
+          <div class="title">Infrastructure Engineer · VMware, Storage & Backup Specialist</div>
+        </div>
+
+        <div class="summary">
+          Infrastructure Engineer with 9+ years in datacenter operations, virtualization and storage. Experienced in VMware environments, backup solutions (Networker, Cohesity), storage design, migrations and operation. Currently expanding Microsoft Azure and infrastructure automation skills. Strong focus on reliable, secure and scalable infrastructure design.
+        </div>
+
+        <div>
+          <div class="label-small">Core skills</div>
+          <div class="skills" aria-hidden="false">
+            <span class="chip light">VMware</span>
+            <span class="chip">Storage & Design</span>
+            <span class="chip light">Backup (Networker, Cohesity)</span>
+            <span class="chip">Migrations</span>
+            <span class="chip light">Solution Design</span>
+            <span class="chip">Infrastructure Operations</span>
+            <span class="chip light">Azure (learning)</span>
+            <span class="chip">PowerShell</span>
+          </div>
+        </div>
+
+        <div class="cta-row">
+          <a class="btn-primary" id="download-cv" href="cv_jan_supik.pdf" download>Download full CV (PDF)</a>
+          <a class="btn-ghost" href="#contact">Contact</a>
+        </div>
+
+        <div>
+          <div class="label-small">Visitor Counter</div>
+          <div class="counter" id="counter">Loading...</div>
+        </div>
+      </section>
+
+      <!-- right content -->
+      <section class="content">
+
+        <!-- About / summary card -->
+        <article class="card reveal">
+          <h2>About</h2>
+          <p class="small">I’m an infrastructure engineer specialising in virtualization, storage and backups. I work with design, migration and day-to-day operations. Focused on security and resilience. Learning Azure, Terraform and automation to move infrastructure to reproducible, managed platforms.</p>
+        </article>
+
+        <!-- Experience grid -->
+        <article id="experience" class="card reveal">
+          <h2>Experience</h2>
+          <div class="grid" style="margin-top:12px">
+            <div class="experience-item">
+              <div class="exp-left">VM</div>
+              <div class="exp-content">
+                <h3>Infrastructure & Virtualization</h3>
+                <p>Design, operation and tuning of VMware environments. Capacity planning and performance optimization for production workloads.</p>
+              </div>
+            </div>
+
+            <div class="experience-item">
+              <div class="exp-left">ST</div>
+              <div class="exp-content">
+                <h3>Storage & Backup</h3>
+                <p>Design and management of storage solutions and backups — Networker, Cohesity. Data protection strategies and restore procedures.</p>
+              </div>
+            </div>
+
+            <div class="experience-item">
+              <div class="exp-left">MIG</div>
+              <div class="exp-content">
+                <h3>Migrations & Projects</h3>
+                <p>Platform migrations, data migration planning and orchestration, cutover planning and validation.</p>
+              </div>
+            </div>
+
+            <div class="experience-item">
+              <div class="exp-left">OPS</div>
+              <div class="exp-content">
+                <h3>Operation & Support</h3>
+                <p>Day-to-day running, incident handling, change control and runbooks. Ensuring stable production environments.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Skills / Certs -->
+        <article id="skills" class="card reveal">
+          <h2>Skills & Tools</h2>
+          <p class="small">Strong experience in infrastructure technologies and practical administration. Listed skills are broad and focus on infra fundamentals — not product-level certifications in this section.</p>
+
+          <div style="margin-top:12px; display:flex;flex-wrap:wrap; gap:10px;">
+            <span class="chip">VMware</span>
+            <span class="chip light">Storage</span>
+            <span class="chip">Backup</span>
+            <span class="chip light">Migrations</span>
+            <span class="chip">Solution Design</span>
+            <span class="chip light">PowerShell</span>
+            <span class="chip">GitHub</span>
+            <span class="chip light">Azure (learning)</span>
+          </div>
+        </article>
+
+        <article id="certs" class="card reveal">
+          <h2>Certifications</h2>
+          <p class="small">All certifications listed as in my CV.</p>
+          <ul style="color:var(--muted);margin-top:10px">
+            <li>AZ-900: Microsoft Azure Fundamentals</li>
+            <!-- add other certs from CV -->
+            <li>Other certifications (as listed in CV)</li>
+          </ul>
+        </article>
+
+        <article id="contact" class="card reveal">
+          <h2>Contact</h2>
+          <p class="small">Feel free to reach out by email or phone. Open to roles in infrastructure, virtualization and storage engineering.</p>
+
+          <div style="margin-top:10px; display:flex;flex-direction:column;gap:8px">
+            <div><strong>Email:</strong> <a href="mailto:jansupik95@gmail.com" style="color:var(--accent) ;text-decoration:none">jansupik95@gmail.com</a></div>
+            <div><strong>Phone:</strong> <a href="tel:+420721006468" style="color:var(--accent) ;text-decoration:none">+420 721 006 468</a></div>
+            <div><strong>Location:</strong> Prague, Czech Republic</div>
+          </div>
+        </article>
+
+      </section>
+
+    </main>
+
+    <footer>
+      © Jan Šupík — Infrastructure Engineer · Designed 2040-style · Built with Azure
+    </footer>
+
+  </div>
+
+  <!-- JavaScript: scroll reveal, navigation and visitor counter -->
+  <script>
+    // small helper: scroll to top / home
+    function scrollToTop(){ window.scrollTo({top:0,behavior:'smooth'}); }
+
+    // reveal on scroll
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('visible'); });
+    },{threshold:0.12});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+    // Visitor counter — uses your deployed Azure Function
+    const FUNC_URL = 'https://jan-resume-func-bmbgdkhrgefbg2ha.westeurope-01.azurewebsites.net/api/visitorCounter';
+
+    async function bumpAndLoad(){
+      const counterEl = document.getElementById('counter');
+      try {
+        // POST to increment
+        await fetch(FUNC_URL, { method: 'POST', mode:'cors' });
+
+        // GET current value
+        const r = await fetch(FUNC_URL, { method: 'GET', mode:'cors' });
+        const data = await r.json();
+        if(data && typeof data.count !== 'undefined'){
+          counterEl.textContent = Number(data.count).toLocaleString('en-US');
+        } else {
+          counterEl.textContent = '0';
+        }
+      } catch (err) {
+        console.error('visitor counter error', err);
+        counterEl.textContent = '—';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', bumpAndLoad);
+  </script>
+</body>
+</html>
